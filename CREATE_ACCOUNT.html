@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+				<title>Create Acount</title>
+				<style>
+				/* CSS */
+* {
+box-sizing: border-box;
+}
+
+body{
+    margin: 0px;
+    box-sizing: border-box;
+    background-color: #000000;
+    height: 80vh;
+    width: 100%;
+}
+
+h1 {
+font-weight: bold;
+margin: 0;
+font-size: 20px;
+font-weight: 100;
+line-height: 20px;
+letter-spacing: 0.5px;
+margin: 20px 0 30px;
+}
+
+h2 {
+text-align: center;
+font-size: 25px;
+font-weight: 100;
+line-height: 20px;
+letter-spacing: 0.5px;
+margin: 20px 0 30px;
+}
+
+p {
+font-size: 14px;
+font-weight: 100;
+line-height: 20px;
+letter-spacing: 0.5px;
+margin: 20px 0 30px;
+}
+
+span {
+font-size: 12px;
+}
+
+a {
+color: white;
+font-size: 24px;
+text-decoration: none;
+margin: 15px 0;
+font-size: 14px;
+font-weight: 100;
+line-height: 20px;
+letter-spacing: 0.5px;
+margin: 20px 0 30px;
+}
+
+a1 {
+color: #333;
+font-size: 14px;
+text-decoration: none;
+margin: 15px 0;
+font-size: 14px;
+font-weight: 100;
+line-height: 20px;
+letter-spacing: 0.5px;
+margin: 20px 0 30px;
+}
+
+button {
+border-radius: 0;
+border: 1px solid White;
+background-color: black;
+color: white;
+font-size: 12px;
+font-weight: bold;
+padding: 12px 45px;
+letter-spacing: 6px;
+text-transform: uppercase;
+transition: transform 80ms ease-in;
+}
+
+button:active {
+transform: scale(0.95);
+}
+
+button:focus {
+outline: none;
+}
+
+button.ghost {
+background-color: transparent;
+border-color: #FFFFFF;
+}
+
+form {
+background-color: #FFFFFF;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+padding: 0 50px;
+height: 100%;
+text-align: center;
+padding: 20px;
+margin-top: -17px;
+}
+
+form:active {
+transform: scale(0.95);
+}
+
+form:focus {
+outline: none;
+}
+
+form.ghost {
+background-color: transparent;
+border-color: #FFFFFF;
+}
+
+input {
+background-color: #eee;
+border: none;
+padding: 12px 15px;
+margin: 8px 0;
+width: 100%;
+}
+
+.container {
+background-color: #fff;
+border-radius: 10px;
+box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+0 10px 10px rgba(0,0,0,0.22);
+position: relative;
+overflow: hidden;
+width: 768px;
+max-width: 100%;
+min-height: 480px;
+}
+
+.form-container {
+position: absolute;
+top: 0;
+height: 100%;
+transition: all 0.6s ease-in-out;
+}
+
+.sign-in-container {
+left: 0;
+width: 50%;
+z-index: 2;
+}
+
+.container.right-panel-active .sign-in-container {
+transform: translateX(100%);
+}
+
+.sign-up-container {
+left: 0;
+width: 50%;
+opacity: 0;
+z-index: 1;
+}
+
+.container.right-panel-active .sign-up-container {
+transform: translateX(100%);
+opacity: 1;
+z-index: 5;
+animation: show 0.6s;
+}
+
+@keyframes show {
+0%, 49.99% {
+opacity: 0;
+z-index: 1;
+}
+
+50%, 100% {
+opacity: 1;
+z-index: 5;
+}
+}
+
+.overlay-container {
+position: absolute;
+top: 0;
+left: 50%;
+width: 50%;
+height: 100%;
+overflow: hidden;
+transition: transform 0.6s ease-in-out;
+z-index: 100;
+}
+
+.container.right-panel-active .overlay-container{
+transform: translateX(-100%);
+}
+
+.overlay {
+background: slateblue;
+background-repeat: no-repeat;
+background-size: cover;
+background-position: 0 0;
+color: #ffffff;
+position: relative;
+left: -100%;
+height: 100%;
+width: 200%;
+transform: translateX(0);
+transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay {
+transform: translateX(50%);
+}
+
+.overlay-panel {
+position: absolute;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+padding: 0 40px;
+text-align: center;
+top: 0;
+height: 100%;
+width: 50%;
+transform: translateX(0);
+transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-left {
+transform: translateX(0);
+}
+
+.overlay-right {
+right: 0;
+transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+transform: translateX(20%);
+}
+
+.social-container {
+margin: 20px 0;
+}
+
+.social-container a {
+border: 1px solid #DDDDDD;
+border-radius: 50%;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+margin: 0 5px;
+height: 40px;
+width: 40px;
+}
+
+//JavaScript
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+container.classList.remove("right-panel-active");
+});
+
+				</style>
+<div>
+				<!-- Navbar brand -->
+  <center><a class="navbar-brand" href="">www.dreamersmusic.com</a></center>
+  <br>
+</div>
+
+  <!-- Collapse button -->
+  <a href="Leesh.html"><left><button>MORE</button></left></a>
+</head>
+
+<body > <div><center><h1 style="color: white">Create Acount</h1> <p style="color: white">Please note: Password, Email are required</p></center><br><br><br><br>
+</div>
+
+
+<form ><div ><label for="First Name" ></label> <input type="text" placeholder="Enter first name" id="First Name" required > <label for="Last Name" ></label> <input type="text" placeholder="Enter Last Name" id="Last Name" required ><br ><br ><label for="Email" ></label> <input type="email" placeholder="Enter email address" id="Email" required > <label for="password" ></label> <input type="password" placeholder= "Enter Password" id="password" required ><br > <br ></div><div > <p >Do you have a Credit card or PayPal?</p> <select name="Credit card or PayPal" ><option value="Credit card" >credit card</option> <option value="Mpamba" >Mpamba</option> <option value="PayPal" >PayPal</option> </select> <input type="file">Upload</input><br ><br><button type="Submit" value="send" >Send</button><br></div></form></body> </html>
